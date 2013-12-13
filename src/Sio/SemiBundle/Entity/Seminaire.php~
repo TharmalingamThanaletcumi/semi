@@ -1,0 +1,73 @@
+<?php
+
+namespace Sio\SemiBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+* Seminaire
+* @ORM\Table(name="seminaire")
+* @ORM\Entity(repositoryClass="Sio\SemiBundle\Entity\SeminaireRepository")
+*/
+class Seminaire
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=150)
+     */
+    private $nom;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="sousTitre", type="string", length=150)
+     */
+    private $sousTitre;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="lieu", type="string", length=150)
+     */
+    private $lieu;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\Column(name="dateDebut", type="integer")
+     */
+    private $dateDebut;
+	
+		/**
+     * @var integer
+     *
+     * @ORM\Column(name="dateFin", type="integer")
+     */
+    private $dateFin;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="commentaire", type="string", length=300)
+     */
+    private $commentaire;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="cle", type="string", length=255)
+     */
+    private $cle;
+	
+	
+
+}

@@ -1,0 +1,66 @@
+<?php
+
+namespace Sio\SemiBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+* Seance
+* @ORM\Table(name="seance")
+* @ORM\Entity(repositoryClass="Sio\SemiBundle\Entity\SeanceRepository")
+*/
+class Seance
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     */
+    private $id;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=150)
+     */
+    private $libelle;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="intervenants", type="string", length=300)
+     */
+    private $intervenants;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\Column(name="nbMax", type="integer")
+     */
+    private $nbMax;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\Column(name="dateHeureDebut", type="integer")
+     */
+    private $dateHeureDebut;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\Column(name="dateHeureFin", type="integer")
+     */
+    private $dateHeureFin;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\Column(name="numRelatif", type="integer")
+     */
+    private $numRelatif;
+	
+
+
+}

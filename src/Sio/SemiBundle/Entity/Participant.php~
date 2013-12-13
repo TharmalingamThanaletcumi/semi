@@ -1,0 +1,92 @@
+<?php
+
+namespace Sio\SemiBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+* Participant
+* @ORM\Table(name="participant")
+* @ORM\Entity(repositoryClass="Sio\SemiBundle\Entity\ParticipantRepository")
+*/
+class Participant
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=50)
+     */
+    private $nom;
+
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=50)
+     */
+    private $prenom;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="mail", type="string", length=150)
+     */
+    private $mail;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=30)
+     */
+    private $titre;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="resAdministrative", type="string", length=80)
+     */
+    private $resAdministrative;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="resFamilliale", type="string", length=80)
+     */
+    private $resFamilliale;
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="role", type="string", length=50)
+     */
+    private $role;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\Column(name="lastUpdate", type="integer")
+     */
+    private $lastUpdate;
+	
+	/**
+     * @var integer
+     *
+     * @ORM\Column(name="dateCrea", type="integer")
+     */
+    private $dateCrea;
+	
+	
+	
+	
+	
+
+
+    
+}
