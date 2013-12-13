@@ -6,18 +6,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-/**
- * @Route("/admin")
- */
+use Symfony\Component\HttpFoundation\Responses;
+use Symfony\Component\HttpFoundation\Request;
+
+//use Acme\SemiBundle\Entity\Participant;
+
+
+
 class AdminController extends Controller
 {
     /**
-     * @Route("/index")
-     * @Template()
-     */
-    public function indexAction()
-    {
-    	return array();
-    }
+	* @Route("/admin/", name="_admin")
+	* @Template()
+	*/ 
+	public function indexAction()
+	{
+	$name = "kou kou soumaya";
+	return array('name'=> $name);
+	}
+	
+	
+	
 
 }

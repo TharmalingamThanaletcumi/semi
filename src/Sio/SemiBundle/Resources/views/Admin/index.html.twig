@@ -1,7 +1,9 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}SioSemiBundle:Admin:index{% endblock %}
+{% block title "Participants" %}
 
-{% block body %}
-<h1>Welcome to the Admin:index page</h1>
+{% block content %}    
+<h1>	Bonjour {{name}}	</h1> 
 {% endblock %}
+
+{% set code = code(_self) %}

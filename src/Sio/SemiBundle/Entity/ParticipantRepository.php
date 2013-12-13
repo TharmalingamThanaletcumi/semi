@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class ParticipantRepository extends EntityRepository
 {
+	
+	public function findAllParticipant() 
+	{
+		$em = $this -> getEntityManager();
+		$query = $em -> createQuery("SELECT part FROM SioSemiBundle:Participant part ");
+		return $query -> getResult();
+	}
 }
