@@ -5,11 +5,11 @@ namespace Sio\SemiBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
-* Academie
-* @ORM\Table(name="academie")
-* @ORM\Entity(repositoryClass="Sio\SemiBundle\Entity\AcademieRepository")
+* Participant
+* @ORM\Table(name="participant")
+* @ORM\Entity(repositoryClass="Sio\SemiBundle\Entity\ParticipantRepository")
 */
-class Academie
+class Participant
 {
     /**
      * @var integer
@@ -24,6 +24,15 @@ class Academie
      *
      * @ORM\Column(name="nom", type="string", length=50)
      */
-    private $name;
+    private $nom;
 
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=50)
+     */
+    private $prenom;
+
+
+    
 }
