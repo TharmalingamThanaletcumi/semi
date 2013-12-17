@@ -3,7 +3,11 @@
 {% block title "les participant" %} 
 
 {% block content %}
-	<h1>Welcome to the Participant:{{ name }}</h1>
+	    <ul id="part">
+				{% for part in lesParticipants %}
+					<li> {{ part.nom }}
+				{% endfor %}
+		</ul>
 {% endblock %}
 
 {% set code = code(_self) %}
