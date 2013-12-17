@@ -9,19 +9,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Responses;
 use Symfony\Component\HttpFoundation\Request;
 
-//use Acme\SemiBundle\Entity\Participant;
 
 
 
+/**
+ * @Route("/admin")
+ */
 class AdminController extends Controller
 {
     /**
-	* @Route("/admin/", name="_admin")
+	* @Route("/nom/{name}", name="_admin_nom")
 	* @Template()
 	*/ 
-	public function indexAction()
+	public function indexAction($name)
 	{
-	$name = "kou kou soumaya";
+	
 	return array('name'=> $name);
 	}
 	

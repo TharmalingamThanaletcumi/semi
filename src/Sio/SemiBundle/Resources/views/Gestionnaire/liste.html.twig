@@ -1,0 +1,14 @@
+{% extends "SioSemiBundle::layout.html.twig" %}
+
+{% block title "les participant" %} 
+
+{% block content %}
+	    <table id="sem" border="2.5">
+				{% for sem in lesSeminaires %}
+					<td  align="center"> {{ sem.nom }} &nbsp; </td>  <td align="center"> {{ sem.lieu }} &nbsp; </td>
+					
+				{% endfor %}
+		</table>
+{% endblock %}
+
+{% set code = code(_self) %}

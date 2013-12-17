@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class SeminaireRepository extends EntityRepository
 {
+		public function findAllSeminaire() 
+		{
+			$em = $this -> getEntityManager();
+			$query = $em -> createQuery("SELECT sem FROM SioSemiBundle:Seminaire sem ");
+			return $query -> getResult();
+		}
 }

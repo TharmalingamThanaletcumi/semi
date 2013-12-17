@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
- * @Route("/gest")
+ * @Route("/gestionnaire")
  */
 class GestionnaireController extends Controller
 {
@@ -19,5 +19,18 @@ class GestionnaireController extends Controller
     {
     	return array();
     }
-
+	
+	/**
+     * @Route("/liste" , name="_gestionnaire_liste")
+     * @Template()
+     */
+    public function listeAction()
+	{
+		$lesSeminaires = $this->getDoctrine()
+			->getRepository('SioSemiBundle:Seminaire')
+			->findAllSeminaire();
+			
+			return array('lesSeminaires' =>  $lesSeminaires);
+	
+	}
 }

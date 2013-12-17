@@ -1,9 +1,9 @@
-{% extends "::base.html.twig" %}
+{% extends "SioSemiBundle::layout.html.twig" %}
 
-{% block title "Participants" %}
+{% block title "admin" %} 
 
-{% block content %}    
-<h1>	Bonjour {{name}}	</h1> 
+{% block content %}
+	<h1>Welcome to the Participant :  {{ name }}</h1>
 {% endblock %}
 
 {% set code = code(_self) %}
