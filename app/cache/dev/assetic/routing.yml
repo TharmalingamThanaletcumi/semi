@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: 'C:/Users/thana/Documents/sites/semi/app/config/routing_dev.yml'
+    resource: /home/thana/public_html/semi/app/config/routing_dev.yml
