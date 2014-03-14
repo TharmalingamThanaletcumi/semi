@@ -127,7 +127,7 @@ $("#loading").dialog({
            name='inscrire<?php echo ($seancesParalleles) ? $i : ''?>' 
            <?php echo ($seance['idParticipant']) ? 'checked' : ' '?> 
            <?php if ($seance['dispo']<=0 && !$seance['idParticipant']) echo 'disabled' ?> 
-           onClick='inscrSeance(<?php print($seance['id'])?>,"<?php print($seance['realDateHeureDebut']) ?>", "<?php print(htmlspecialchars(substr($seance['libelle']),0, 25).'...')?>", this.checked, null )' 
+           onClick='inscrSeance(<?php print($seance['id'])?>,"<?php print($seance['realDateHeureDebut']) ?>", "<?php print(htmlspecialchars( substr($seance['libelle'],0,25)).'...')?>", this.checked, null )' 
      /> 
     </td>
     <?php endif;?>
