@@ -28,5 +28,8 @@ class ParticipantRepository extends EntityRepository
 	}
 	
 	
-	
+	public function enregitrerParticipant()
+	{
+		
+	}
 }
