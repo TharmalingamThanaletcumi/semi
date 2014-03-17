@@ -44,15 +44,16 @@ class ParticipantController extends Controller
 	 * @Route("/nombre/" , name="_participant_nombre")
 	 * @Template()
 	 */
-	public function NombreParticipantsAction()
+	public function nombreParticipantsAction()
 	{
 		$nombreParticipants = $this->getDoctrine()
 			->getRepository('SioSemiBundle:Participant')
 			->findNbParticipant();
 			
-			return array('NombreParticipants' =>  $nombreParticipants);
+			return array('nombreParticipants' =>  $nombreParticipants);
 	
 	}
+	
 	
 	
 }

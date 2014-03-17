@@ -26,4 +26,6 @@ class ParticipantRepository extends EntityRepository
 		$query = $em -> createQuery("SELECT COUNT(part.id) FROM SioSemiBundle:Participant part ");
 		return $query -> getSingleScalarResult();
 	}
+	
+	
 }
