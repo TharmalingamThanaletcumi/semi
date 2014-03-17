@@ -54,6 +54,15 @@ class ParticipantController extends Controller
 	
 	}
 	
-	
+	/**
+	 * @Route("/formulaire/" , name="_formulaire")
+	 * @Template()
+	 */
+	 
+	 public function formulaireAction(Request $request)
+    {
+    	
+       
+    }
 	
 }
