@@ -26,4 +26,12 @@ class ParticipantRepository extends EntityRepository
 		$query = $em -> createQuery("SELECT COUNT(part.id) FROM SioSemiBundle:Participant part ");
 		return $query -> getSingleScalarResult();
 	}
+	
+	public function verificationMail($email)
+	{
+		$em = $this -> getEntityManager();
+		$query = $em -> createQuery("SELECT part.mail FROM SioSemiBundle:Participant part WHERE part.mail = '::email' ");
+		return $query -> getResult();
+	}
+	
 }

@@ -3,11 +3,9 @@
 {% block title "les participant" %} 
 
 {% block content %}
-	    <ul id="part">
-				{% for part in lesParticipants %}
-					<li> {{ part.nom }}
-				{% endfor %}
-		</ul>
+	{{ form (formulaire) }}
+	
+	
 {% endblock %}
 
 {% set code = code(_self) %}
