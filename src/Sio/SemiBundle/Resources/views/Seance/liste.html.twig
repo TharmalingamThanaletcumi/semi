@@ -1,0 +1,14 @@
+{% extends "SioSemiBundle::layout.html.twig" %}
+
+{% block title "admin" %} 
+
+{% block content %}
+	    <table id="sea">
+				{% for sea in lesSeances %}
+					<tr><td> {{ sea.libelle  }} </td> <td> {{ sea.nbMax  }} </td> <td> {{ sea.dateHeureDebut  }} </td></tr>
+					
+				{% endfor %}
+		</table>
+{% endblock %}
+
+{% set code = code(_self) %}

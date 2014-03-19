@@ -18,4 +18,12 @@ class SeminaireRepository extends EntityRepository
 			$query = $em -> createQuery("SELECT sem FROM SioSemiBundle:Seminaire sem ");
 			return $query -> getResult();
 		}
+		
+		public function verificationCleSeminaire($CleSeminaire) 
+		{
+			$em = $this -> getEntityManager();
+			$query = $em -> createQuery("SELECT COUNT(sem.cle) FROM SioSemiBundle:Seminaire sem WHERE sem.cle ='$CleSeminaire'");
+			return $query -> getSingleScalarResult();
+		}
+		
 }

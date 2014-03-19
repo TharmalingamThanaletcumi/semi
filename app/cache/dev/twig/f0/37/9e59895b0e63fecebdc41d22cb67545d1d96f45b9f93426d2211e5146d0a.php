@@ -22,7 +22,7 @@ class __TwigTemplate_f0379e59895b0e63fecebdc41d22cb67545d1d96f45b9f93426d2211e51
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 11
+        // line 10
         $context["code"] = $this->env->getExtension('demo')->getCode($this);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
@@ -37,10 +37,9 @@ class __TwigTemplate_f0379e59895b0e63fecebdc41d22cb67545d1d96f45b9f93426d2211e51
     public function block_content($context, array $blocks = array())
     {
         // line 6
-        echo "\t";
-        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["formulaire"]) ? $context["formulaire"] : $this->getContext($context, "formulaire")), 'form');
-        echo "
-\t
+        echo "<p align=\"center\">\t";
+        echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["login"]) ? $context["login"] : $this->getContext($context, "login")), 'form');
+        echo "\t<p>
 \t
 ";
     }
@@ -57,6 +56,6 @@ class __TwigTemplate_f0379e59895b0e63fecebdc41d22cb67545d1d96f45b9f93426d2211e51
 
     public function getDebugInfo()
     {
-        return array (  40 => 6,  37 => 5,  31 => 3,  26 => 11,);
+        return array (  40 => 6,  37 => 5,  31 => 3,  26 => 10,);
     }
 }

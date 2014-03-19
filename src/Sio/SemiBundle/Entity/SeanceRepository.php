@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class SeanceRepository extends EntityRepository
 {
+	public function findAllSeance() 
+		{
+			$em = $this -> getEntityManager();
+			$query = $em -> createQuery("SELECT sea FROM SioSemiBundle:Seance sea ");
+			return $query -> getResult();
+		}
+		
+	
 }
