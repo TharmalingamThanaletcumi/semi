@@ -37,7 +37,7 @@ class ParticipantController extends Controller {
 	 * @Route("/nombre/" , name="_participant_nombre")
 	 * @Template()
 	 */
-<<<<<<< HEAD
+
 	public function nombreParticipantsAction()
 	{
 		$nombreParticipants = $this->getDoctrine()
@@ -46,25 +46,6 @@ class ParticipantController extends Controller {
 			
 			return array('nombreParticipants' =>  $nombreParticipants);
 	
-	}
-	
-	/**
-	 * @Route("/formulaire/" , name="_formulaire")
-	 * @Template()
-	 */
-	 
-	 public function formulaireAction(Request $request)
-    {
-    	
-       
-    }
-	
-=======
-	public function NombreParticipantsAction() {
-		$nombreParticipants = $this -> getDoctrine() -> getRepository('SioSemiBundle:Participant') -> findNbParticipant();
-
-		return array('NombreParticipants' => $nombreParticipants);
-
 	}
 
 	/**
@@ -97,5 +78,5 @@ class ParticipantController extends Controller {
 		return array('formulaire' => $form -> createView());
 	}
 
->>>>>>> 206f578d1f02bf0567491edf975bc1239c3283cf
+
 }
