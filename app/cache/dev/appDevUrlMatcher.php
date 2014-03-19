@@ -180,13 +180,13 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Sio\\SemiBundle\\Controller\\ParticipantController::nombreParticipantsAction',  '_route' => '_participant_nombre',);
             }
 
-            // _formulaire
-            if (rtrim($pathinfo, '/') === '/participant/formulaire') {
+            // _login
+            if (rtrim($pathinfo, '/') === '/participant/login') {
                 if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', '_formulaire');
+                    return $this->redirect($pathinfo.'/', '_login');
                 }
 
-                return array (  '_controller' => 'Sio\\SemiBundle\\Controller\\ParticipantController::formulaireAction',  '_route' => '_formulaire',);
+                return array (  '_controller' => 'Sio\\SemiBundle\\Controller\\ParticipantController::loginAction',  '_route' => '_login',);
             }
 
         }

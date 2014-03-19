@@ -61,6 +61,7 @@ class ParticipantController extends Controller {
 
 		$form -> handleRequest($request);
 		// Ensuite, cet objet est validé. (voir syst. de validation)
+		
 		if (/*$form -> isPost() &&*/ $form -> isValid()) {
 				
 			$email = $form -> get('email') -> getData();
@@ -68,15 +69,21 @@ class ParticipantController extends Controller {
 			
 			$verificationMail = $this -> getDoctrine() -> getRepository('SioSemiBundle:Participant') -> verificationMail($email);
 			
-			if ($verificationMail){
+			if ($verificationMail==1){
 				return $this->redirect($this->generateUrl('_participant_liste'));
+				
 			}
-			else 
-				{return array('formulaire' => $form -> createView());}
+			elseif($verificationMail==0) 
+				{
+					return $this->redirect($this->generateUrl('_participant_nombre'));
+				}
 		}
+		
 
 		return array('formulaire' => $form -> createView());
 	}
+	
+	
 
 
 }

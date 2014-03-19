@@ -46,7 +46,7 @@ class __TwigTemplate_c6e118b475106e7a4aae6165421bb4b6062c071c34ce892aeebf4890299
     // line 8
     public function block_title($context, array $blocks = array())
     {
-        echo "Demo Bundle";
+        echo "Seminaire";
     }
 
     // line 10
@@ -90,12 +90,12 @@ class __TwigTemplate_c6e118b475106e7a4aae6165421bb4b6062c071c34ce892aeebf4890299
     public function block_content_header($context, array $blocks = array())
     {
         // line 18
-        echo "        <ul id=\"menu\">
+        echo "         <ul id=\"menu\">
             ";
         // line 19
         $this->displayBlock('content_header_more', $context, $blocks);
         // line 22
-        echo "        </ul>
+        echo "        </ul> 
 
         <div style=\"clear: both\"></div>
     ";
@@ -105,9 +105,7 @@ class __TwigTemplate_c6e118b475106e7a4aae6165421bb4b6062c071c34ce892aeebf4890299
     public function block_content_header_more($context, array $blocks = array())
     {
         // line 20
-        echo "                <li><a href=\"";
-        echo $this->env->getExtension('routing')->getPath("_demo");
-        echo "\">Demo Home</a></li>
+        echo "               
             ";
     }
 
@@ -128,6 +126,6 @@ class __TwigTemplate_c6e118b475106e7a4aae6165421bb4b6062c071c34ce892aeebf4890299
 
     public function getDebugInfo()
     {
-        return array (  115 => 28,  108 => 20,  105 => 19,  98 => 22,  96 => 19,  93 => 18,  90 => 17,  84 => 29,  82 => 28,  78 => 26,  76 => 17,  73 => 16,  64 => 13,  61 => 12,  53 => 10,  41 => 5,  36 => 4,  33 => 3,  56 => 11,  47 => 8,  43 => 7,  40 => 6,  37 => 5,  31 => 3,  26 => 13,);
+        return array (  113 => 28,  108 => 20,  105 => 19,  98 => 22,  96 => 19,  93 => 18,  90 => 17,  84 => 29,  82 => 28,  78 => 26,  76 => 17,  73 => 16,  64 => 13,  61 => 12,  56 => 11,  53 => 10,  47 => 8,  41 => 5,  36 => 4,  33 => 3,  40 => 6,  37 => 5,  31 => 3,  26 => 11,);
     }
 }

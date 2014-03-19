@@ -46,7 +46,7 @@ class __TwigTemplate_f280e837bd384915f21c8608e50b38bd5c88337382f0fa8f2b3b30abbf9
             // line 8
             echo "\t\t\t\t\t<li> ";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["part"]) ? $context["part"] : $this->getContext($context, "part")), "nom"), "html", null, true);
-            echo "
+            echo " 
 \t\t\t\t";
         }
         $_parent = $context['_parent'];
