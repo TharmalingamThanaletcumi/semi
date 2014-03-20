@@ -7,7 +7,7 @@ class __TwigTemplate_c6e118b475106e7a4aae6165421bb4b6062c071c34ce892aeebf4890299
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("TwigBundle::layout.html.twig");
+        $this->parent = false;
 
         $this->blocks = array(
             'head' => array($this, 'block_head'),
@@ -19,48 +19,54 @@ class __TwigTemplate_c6e118b475106e7a4aae6165421bb4b6062c071c34ce892aeebf4890299
         );
     }
 
-    protected function doGetParent(array $context)
-    {
-        return "TwigBundle::layout.html.twig";
-    }
-
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $this->parent->display($context, array_merge($this->blocks, $blocks));
+        // line 1
+        $this->displayBlock('head', $context, $blocks);
+        // line 5
+        echo "
+";
+        // line 6
+        $this->displayBlock('title', $context, $blocks);
+        // line 7
+        echo "
+";
+        // line 8
+        $this->displayBlock('body', $context, $blocks);
     }
 
-    // line 3
+    // line 1
     public function block_head($context, array $blocks = array())
     {
-        // line 4
+        // line 2
         echo "    <link rel=\"icon\" sizes=\"16x16\" href=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("favicon.ico"), "html", null, true);
         echo "\" />
     <link rel=\"stylesheet\" href=\"";
-        // line 5
+        // line 3
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/acmedemo/css/demo.css"), "html", null, true);
         echo "\" />
 ";
     }
 
-    // line 8
+    // line 6
     public function block_title($context, array $blocks = array())
     {
         echo "Seminaire";
     }
 
-    // line 10
+    // line 8
     public function block_body($context, array $blocks = array())
     {
-        // line 11
+        // line 9
         echo "    ";
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session"), "flashbag"), "get", array(0 => "notice"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
-            // line 12
+            // line 10
             echo "        <div class=\"flash-message\">
             <em>Notice</em>: ";
-            // line 13
+            // line 11
             echo twig_escape_filter($this->env, (isset($context["flashMessage"]) ? $context["flashMessage"] : $this->getContext($context, "flashMessage")), "html", null, true);
             echo "
         </div>
@@ -69,47 +75,47 @@ class __TwigTemplate_c6e118b475106e7a4aae6165421bb4b6062c071c34ce892aeebf4890299
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 16
+        // line 14
         echo "
     ";
-        // line 17
+        // line 15
         $this->displayBlock('content_header', $context, $blocks);
-        // line 26
+        // line 24
         echo "
     <div class=\"block\">
         ";
-        // line 28
+        // line 26
         $this->displayBlock('content', $context, $blocks);
-        // line 29
+        // line 27
         echo "    </div>
 
 ";
     }
 
-    // line 17
+    // line 15
     public function block_content_header($context, array $blocks = array())
     {
-        // line 18
+        // line 16
         echo "         <ul id=\"menu\">
             ";
-        // line 19
+        // line 17
         $this->displayBlock('content_header_more', $context, $blocks);
-        // line 22
+        // line 20
         echo "        </ul> 
 
         <div style=\"clear: both\"></div>
     ";
     }
 
-    // line 19
+    // line 17
     public function block_content_header_more($context, array $blocks = array())
     {
-        // line 20
+        // line 18
         echo "               
             ";
     }
 
-    // line 28
+    // line 26
     public function block_content($context, array $blocks = array())
     {
     }
@@ -119,13 +125,8 @@ class __TwigTemplate_c6e118b475106e7a4aae6165421bb4b6062c071c34ce892aeebf4890299
         return "SioSemiBundle::layout.html.twig";
     }
 
-    public function isTraitable()
-    {
-        return false;
-    }
-
     public function getDebugInfo()
     {
-        return array (  113 => 28,  108 => 20,  105 => 19,  98 => 22,  96 => 19,  93 => 18,  90 => 17,  84 => 29,  82 => 28,  78 => 26,  76 => 17,  73 => 16,  64 => 13,  61 => 12,  56 => 11,  53 => 10,  47 => 8,  41 => 5,  36 => 4,  33 => 3,  40 => 6,  37 => 5,  31 => 3,  26 => 11,);
+        return array (  119 => 26,  114 => 18,  111 => 17,  104 => 20,  102 => 17,  99 => 16,  96 => 15,  90 => 27,  88 => 26,  84 => 24,  82 => 15,  79 => 14,  70 => 11,  67 => 10,  62 => 9,  59 => 8,  53 => 6,  47 => 3,  42 => 2,  39 => 1,  35 => 8,  32 => 7,  30 => 6,  27 => 5,  25 => 1,);
     }
 }

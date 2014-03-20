@@ -292,3 +292,6 @@ dd695c,127.0.0.1,GET,http://localhost/sites/semi/web/app_dev.php/participant/for
 3956e0,127.0.0.1,GET,http://localhost/sites/semi/web/app_dev.php/participant/formulaireInscription/,1395353313,
 2156dc,127.0.0.1,GET,http://localhost/sites/semi/web/app_dev.php/participant/formulaireInscription/,1395353406,
 aaa07c,127.0.0.1,GET,http://localhost/sites/semi/web/app_dev.php/participant/formulaireInscription/,1395353455,
+769266,127.0.0.1,GET,http://localhost/sites/semi/web/app_dev.php/participant/formulaireInscription/,1395353834,
+7a6745,127.0.0.1,GET,http://localhost/sites/semi/web/app_dev.php/participant/validationMail/,1395353941,
+21f78c,127.0.0.1,GET,http://localhost/sites/semi/web/app_dev.php/participant/login/,1395353946,
