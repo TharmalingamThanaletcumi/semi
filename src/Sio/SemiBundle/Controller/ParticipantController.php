@@ -47,22 +47,22 @@ class ParticipantController extends Controller {
 			return array('nombreParticipants' =>  $nombreParticipants);
 	
 	}
-
+	
 	/**
 	 * @Route("/login/" , name="_login")
 	 * @Template()
 	 */
 	public function loginAction(Request $request) {
-
+		
 		$form = $this -> createFormBuilder() 
-		-> add('email', 'text') 
-		-> add('cleSeminaire', 'text') 
+		-> add('email', 'email') 
+		-> add('cleSeminaire', 'password' )
 		-> add('save', 'submit') -> getForm();
 
 		$form -> handleRequest($request);
 		// Ensuite, cet objet est validé. (voir syst. de validation)
 		
-		if (/*$form -> isPost() &&*/ $form -> isValid()) {
+		if ( $form -> isValid()) {
 				
 			$email = $form -> get('email') -> getData();
 			$CleSeminaire = $form -> get('cleSeminaire') -> getData();
@@ -70,7 +70,7 @@ class ParticipantController extends Controller {
 			$verificationMail = $this -> getDoctrine() -> getRepository('SioSemiBundle:Participant') -> verificationMail($email);
 			$verificationCleSeminaire = $this -> getDoctrine() -> getRepository('SioSemiBundle:Seminaire') -> verificationCleSeminaire($CleSeminaire);
 			
-			if ($verificationCleSeminaire==1){
+			if ($verificationCleSeminaire){
 				if ($verificationMail==1){
 					return $this->redirect($this->generateUrl('_seance_liste'));
 					
@@ -94,14 +94,50 @@ class ParticipantController extends Controller {
 	public function validationMailAction(Request $request) {
 
 		$form = $this -> createFormBuilder() 
-		-> add('email', 'text') 
-		-> add('confrimation-email','text')
-		-> add('cleSeminaire', 'text') 
+		-> add('email', 'email') 
+		-> add('confrimation-email','email')
+		-> add('cleSeminaire', 'password') 
 		-> add('save', 'submit') -> getForm();
 
 		$form -> handleRequest($request);
+		
+		if ( $form -> isValid()) {
+			$email = $form -> get('email') -> getData();
+			$confrimationEmail = $form -> get('confrimation-email') -> getData();
+			$CleSeminaire = $form -> get('cleSeminaire') -> getData();
+			
+			$verificationCleSeminaire = $this -> getDoctrine() -> getRepository('SioSemiBundle:Seminaire') -> verificationCleSeminaire($CleSeminaire);
+			
+			if($email==$confrimationEmail && $verificationCleSeminaire){
+				return $this->redirect($this->generateUrl('_formulaireInscription'));
+			}
+		}
 	
 	return array('validationMail' => $form -> createView());
 
 	}
+		/**
+	 * @Route("/formulaireInscription/" , name="_formulaireInscription")
+	 * @Template()
+	 */
+	 public function formulaireInscriptionAction(Request $request)
+	 {
+	 	$lesAcadamie = $this -> getDoctrine() -> getRepository('SioSemiBundle:Academie') -> findAllAcadamie();
+		$listeTitre =array('Professeur','IA-IPR','IEN','Autre');
+		 $form = $this -> createFormBuilder() 
+		-> add('nom', 'text') 
+		-> add('prenom','text')
+		-> add('email', 'email')
+		-> add('acadamie', 'choice', array('choices' => array('lesacadamie' => $lesAcadamie)))
+		-> add('Ville-personnelle', 'text')
+		-> add('Ville-administrative', 'text')
+		-> add('titre', 'radio' )
+		-> add('titre', 'choice', array('choices' => array("listeTitre" => $listeTitre)))
+		-> add('valider', 'submit') -> getForm();
+		
+		$form -> handleRequest($request);
+		
+		return array('inscription' => $form -> createView());
+	 }
+	 
 }
