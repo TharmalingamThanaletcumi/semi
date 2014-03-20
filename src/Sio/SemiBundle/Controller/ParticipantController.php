@@ -62,15 +62,21 @@ class ParticipantController extends Controller {
 			$email = $form -> get('email') -> getData();
 			$CleSeminaire = $form -> get('cleSeminaire') -> getData();
 			
-			$verificationMail = $this -> getDoctrine() -> getRepository('SioSemiBundle:Participant') -> verificationMail($email);
+			$verificationMail = $this -> getDoctrine() 
+									  -> getRepository('SioSemiBundle:Participant') 
+									  -> verificationMail($email);
 			
-			if ($verificationMail){
+			if ($verificationMail=1){
 				return $this->redirect($this->generateUrl('_participant_liste'));
 			}
-			else 
-				{return array('formulaire' => $form -> createView());}
+			elseif($verificationMail=0){
+				return $this->redirect($this->generateUrl('_participant_nombre'));
+			} 
+			else {
+				return array('formulaire' => $form -> createView());
+			}
+				
 		}
-
 		return array('formulaire' => $form -> createView());
 	}
 
