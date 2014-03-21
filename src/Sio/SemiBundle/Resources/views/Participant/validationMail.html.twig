@@ -3,10 +3,7 @@
 {% block title "les participant" %} 
 
 {% block content %}
-	    
-			<h1> nombre de participant : {{nombreParticipants}} </h1>
-		
+	{{ form (validationMail) }}
 {% endblock %}
-
 
 {% set code = code(_self) %}

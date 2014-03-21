@@ -37,11 +37,15 @@ class ParticipantController extends Controller {
 	 * @Route("/nombre/" , name="_participant_nombre")
 	 * @Template()
 	 */
-	public function NombreParticipantsAction() {
-		$nombreParticipants = $this -> getDoctrine() -> getRepository('SioSemiBundle:Participant') -> findNbParticipant();
 
-		return array('NombreParticipants' => $nombreParticipants);
-
+	public function nombreParticipantsAction()
+	{
+		$nombreParticipants = $this->getDoctrine()
+			->getRepository('SioSemiBundle:Participant')
+			->findNbParticipant();
+			
+			return array('nombreParticipants' =>  $nombreParticipants);
+	
 	}
 
 	/**
@@ -52,32 +56,53 @@ class ParticipantController extends Controller {
 
 		$form = $this -> createFormBuilder() 
 		-> add('email', 'text') 
-		-> add('cleSeminaire', 'integer') 
+		-> add('cleSeminaire', 'text') 
 		-> add('save', 'submit') -> getForm();
 
 		$form -> handleRequest($request);
 		// Ensuite, cet objet est validé. (voir syst. de validation)
+		
 		if (/*$form -> isPost() &&*/ $form -> isValid()) {
 				
 			$email = $form -> get('email') -> getData();
 			$CleSeminaire = $form -> get('cleSeminaire') -> getData();
 			
-			$verificationMail = $this -> getDoctrine() 
-									  -> getRepository('SioSemiBundle:Participant') 
-									  -> verificationMail($email);
+			$verificationMail = $this -> getDoctrine() -> getRepository('SioSemiBundle:Participant') -> verificationMail($email);
+			$verificationCleSeminaire = $this -> getDoctrine() -> getRepository('SioSemiBundle:Seminaire') -> verificationCleSeminaire($CleSeminaire);
 			
-			if ($verificationMail=1){
-				return $this->redirect($this->generateUrl('_participant_liste'));
-			}
-			elseif($verificationMail=0){
-				return $this->redirect($this->generateUrl('_participant_nombre'));
-			} 
-			else {
-				return array('formulaire' => $form -> createView());
-			}
-				
+			if ($verificationCleSeminaire==1){
+				if ($verificationMail==1){
+					return $this->redirect($this->generateUrl('_seance_liste'));
+					
+				}
+				elseif($verificationMail==0) 
+					{
+						return $this->redirect($this->generateUrl('_validationMail'));
+					
+					}
+			}	
 		}
-		return array('formulaire' => $form -> createView());
+		
+
+		return array('login' => $form -> createView());
+
 	}
 
+	/**
+	 * @Route("/validationMail/" , name="_validationMail")
+	 * @Template()
+	 */
+	public function validationMailAction(Request $request) {
+
+		$form = $this -> createFormBuilder() 
+		-> add('email', 'text') 
+		-> add('confrimation-email','text')
+		-> add('cleSeminaire', 'text') 
+		-> add('save', 'submit') -> getForm();
+
+		$form -> handleRequest($request);
+	
+	return array('validationMail' => $form -> createView());
+
+	}
 }

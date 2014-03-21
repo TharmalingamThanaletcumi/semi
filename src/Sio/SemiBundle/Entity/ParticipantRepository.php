@@ -15,6 +15,7 @@ class ParticipantRepository extends EntityRepository
 	
 	public function findAllParticipant() 
 	{
+
 		$em = $this -> getEntityManager();
 		$query = $em -> createQuery("SELECT part FROM SioSemiBundle:Participant part ");
 		return $query -> getResult();
@@ -30,8 +31,12 @@ class ParticipantRepository extends EntityRepository
 	public function verificationMail($email)
 	{
 		$em = $this -> getEntityManager();
-		$query = $em -> createQuery("SELECT COUNT(part.mail) FROM SioSemiBundle:Participant part WHERE part.mail = '::email' ");
-		return $query -> getResult();
+		$query = $em -> createQuery("SELECT COUNT(part.mail) FROM SioSemiBundle:Participant part WHERE part.mail = '$email' ");
+		return $query -> getSingleScalarResult();
+
 	}
 	
+	
+	
 }
+
