@@ -93,7 +93,7 @@ class ParticipantController extends Controller {
 	 * @Template()
 	 */
 	public function validationMailAction(Request $request) {
-
+		
 		$form = $this -> createFormBuilder() 
 		-> add('email', 'email') 
 		-> add('confrimation-email','email')
@@ -126,21 +126,29 @@ class ParticipantController extends Controller {
 	 */
 	 public function formulaireInscriptionAction(Request $request)
 	 {
-	 	$lesAcadamie = $this -> getDoctrine() -> getRepository('SioSemiBundle:Academie') -> findAllAcadamie();
 		$listeTitre =array('Professeur','IA-IPR','IEN','Autre');
 		 $form = $this -> createFormBuilder() 
 		-> add('nom', 'text') 
 		-> add('prenom','text')
 		-> add('email', 'email')
-		-> add('acadamie', 'choice', array('choices' => array('lesacadamie' => $lesAcadamie)))
+		/*-> add('academie', 'choice', array('choices' => $lesAcadamie))*/
+		-> add('Academie', 'entity', array('class' => 'Sio\SemiBundle\Entity\Academie', 'property' => 'nom', 'multiple' => false,'empty_value' => 'choisissez votre Academie','required' => false ))
 		-> add('Ville-personnelle', 'text')
 		-> add('Ville-administrative', 'text')
-		-> add('titre', 'radio' )
-		-> add('titre', 'choice', array('choices' => array("listeTitre" => $listeTitre)))
+		-> add('titre', 'choice', array('choices'  => $listeTitre))
 		-> add('valider', 'submit') -> getForm();
 		
 		$form -> handleRequest($request);
-		
+		if ( $form -> isValid()) {
+			$nom = $form -> get('nom') -> getData();
+			$prenom = $form -> get('prenom') -> getData();
+			$email = $form -> get('email') -> getData();
+			$academie = $form -> get('academie') -> getData();
+			$villePers = $form -> get('Ville-personnelle') -> getData();
+			$villeAdm = $form -> get('Ville-administrative') -> getData();
+			/*$dateCrea = DateTimeZone*/
+			$titre = $form -> get('titre') -> getData();
+		}
 		return array('inscription' => $form -> createView());
 	 }
 	 
