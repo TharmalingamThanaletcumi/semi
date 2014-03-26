@@ -77,8 +77,9 @@ class ParticipantController extends Controller {
 				}
 				elseif($verificationMail==0) 
 					{
-						return $this->redirect($this->generateUrl('_validationMail'));
-					
+						return $this->redirect($this->generateUrl('_validationMail')) ;
+						
+						
 					}
 			}	
 		}
@@ -151,6 +152,15 @@ class ParticipantController extends Controller {
 		}
 		return array('inscription' => $form -> createView());
 	 }
+
+	/**
+	 * @Route("/apropos/" , name="_apropos")
+	 * @Template()
+	 */
+	public function aproposAction() {
+		$name = "apropos";
+		return array('name' => $name);
+	}
 	 
 }
 

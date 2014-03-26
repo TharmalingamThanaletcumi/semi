@@ -22,7 +22,7 @@ class __TwigTemplate_a4dd604f802fc994eb3988d9e56ec88b425c49e0dc92cadff0341787fdd
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 9
+        // line 12
         $context["code"] = $this->env->getExtension('demo')->getCode($this);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
@@ -37,9 +37,13 @@ class __TwigTemplate_a4dd604f802fc994eb3988d9e56ec88b425c49e0dc92cadff0341787fdd
     public function block_content($context, array $blocks = array())
     {
         // line 6
-        echo "\t\t";
+        echo "<div class=\"box inscription\">
+";
+        // line 7
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["inscription"]) ? $context["inscription"] : $this->getContext($context, "inscription")), 'form');
         echo "
+</div>
+\t\t
 ";
     }
 
@@ -55,6 +59,6 @@ class __TwigTemplate_a4dd604f802fc994eb3988d9e56ec88b425c49e0dc92cadff0341787fdd
 
     public function getDebugInfo()
     {
-        return array (  40 => 6,  37 => 5,  31 => 3,  26 => 9,);
+        return array (  43 => 7,  40 => 6,  37 => 5,  31 => 3,  26 => 12,);
     }
 }

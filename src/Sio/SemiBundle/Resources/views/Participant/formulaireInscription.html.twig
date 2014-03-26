@@ -3,7 +3,10 @@
 {% block title "les participant" %} 
 
 {% block content %}
-		{{ form (inscription) }}
+<div class="box inscription">
+{{ form (inscription) }}
+</div>
+		
 {% endblock %}
 
 {% set code = code(_self) %}

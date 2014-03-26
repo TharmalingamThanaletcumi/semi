@@ -4,9 +4,11 @@
 
 {% block content %}
 
-<h1> connectez-vous svp </h1>
+<div class="box inscription">
 
-{{ form (login) }}		
+{{ form (login) }}	
+
+<div>	
 {% endblock %}
 
 {% set code = code(_self) %}

@@ -22,7 +22,7 @@ class __TwigTemplate_f0379e59895b0e63fecebdc41d22cb67545d1d96f45b9f93426d2211e51
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 11
+        // line 14
         $context["code"] = $this->env->getExtension('demo')->getCode($this);
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
@@ -37,12 +37,15 @@ class __TwigTemplate_f0379e59895b0e63fecebdc41d22cb67545d1d96f45b9f93426d2211e51
     public function block_content($context, array $blocks = array())
     {
         // line 6
-        echo "<h1> connectez-vous svp </h1>
+        echo "
+<div class=\"box inscription\">
 
 ";
-        // line 8
+        // line 9
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["login"]) ? $context["login"] : $this->getContext($context, "login")), 'form');
-        echo "\t\t
+        echo "\t
+
+<div>\t
 ";
     }
 
@@ -58,6 +61,6 @@ class __TwigTemplate_f0379e59895b0e63fecebdc41d22cb67545d1d96f45b9f93426d2211e51
 
     public function getDebugInfo()
     {
-        return array (  44 => 8,  40 => 6,  37 => 5,  31 => 3,  26 => 11,);
+        return array (  45 => 9,  40 => 6,  37 => 5,  31 => 3,  26 => 14,);
     }
 }

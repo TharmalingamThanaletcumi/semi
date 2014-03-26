@@ -1,31 +1,58 @@
-{% extends "::base.html.twig" %}
-{% block head %}
-    <link rel="icon" sizes="16x16" href="{{ asset('favicon.ico') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/acmedemo/css/demo.css') }}" /> 
-         
-{% endblock %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link href="{{ asset('styles/styles.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('styles/jquery-ui.css') }}" rel="stylesheet" type="text/css" />
+  
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}" />
+    <link rel="icon" href="{{asset('/images/favicon.ico')}}" type="image/x-icon" />
+    
+    <link rel="stylesheet" href="{{asset('./styles/dataTable.css')}}" media="screen" />
+    <link rel="stylesheet" type="text/css" href="{{asset('./styles/jquery.gritter.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('./styles/formlogin.css')}}" />
+    
+     <script type="text/javascript" src="{{asset('js/jquery-1.7.2.min.js')}}"></script>     
+     <script type="text/javascript" src="{{asset('js/jquery-ui-1.8.23.custom.min.js')}}"></script>
+     <script type="text/javascript" src="{{asset('js/jquery.gritter.min.js')}}"></script>
+     <script type="text/javascript" src="{{asset('js/jquery_002.js')}}"></script>
+     <title>E-Seminaire : gestion des inscriptions</title>
+  </head>
+  <body>
+  
+  <header>  </header>
+  
+  <div id='navigation'>  
+  <nav>
+	<ul>
 
-{% block title 'Seminaire' %}
+		<li><a href="{{ path('_login') }}">Login</a></li>
+		<li><a href="{{path ('_apropos')}}">A propos</a>
+		</li>
+  </ul>
+  </nav>	
+</div>
+<br/>
+<script type="text/javascript">
 
-{% block body %}
-    {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="flash-message">
-            <em>Notice</em>: {{ flashMessage }}
-        </div>
-    {% endfor %}
+</script>
+    <br/>
+      <div id="titre">       
+        <!-- img src="./images/seminairelogo.jpg" id="logoseminaire" alt="seminaire" title="seminaire" / -->       
+        <h3>Séminaire : « Les Journées du management »</h3>
+              </div>
 
-    {% block content_header %}
-         <ul id="menu">
-            {% block content_header_more %}
-               
-            {% endblock %}
-        </ul> 
+ 
+ {% block content %}
+ 
+ {% endblock %}
 
-        <div style="clear: both"></div>
-    {% endblock %}
+  <!-- Division pour le pied de page -->
+    
+  </body>
+</html>
 
-    <div class="block">
-        {% block content %}{% endblock %}
-    </div>
 
-{% endblock %}
+      
+      

@@ -207,6 +207,15 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'Sio\\SemiBundle\\Controller\\ParticipantController::formulaireInscriptionAction',  '_route' => '_formulaireInscription',);
             }
 
+            // _apropos
+            if (rtrim($pathinfo, '/') === '/participant/apropos') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', '_apropos');
+                }
+
+                return array (  '_controller' => 'Sio\\SemiBundle\\Controller\\ParticipantController::aproposAction',  '_route' => '_apropos',);
+            }
+
         }
 
         // _seance_liste
