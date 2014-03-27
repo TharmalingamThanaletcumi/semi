@@ -12,10 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class AcademieRepository extends EntityRepository
 {
-	/*public function findAllAcadamie() 
+	public function findIdAcadamie($academie) 
 		{
 			$em = $this -> getEntityManager();
-			$query = $em -> createQuery("SELECT aca.nom FROM SioSemiBundle:Academie aca ");
+			$query = $em -> createQuery("SELECT aca.id FROM SioSemiBundle:Academie aca WHERE aca.nom =':academie'");
 			return $query -> getResult();
-		}*/
+		}
 }

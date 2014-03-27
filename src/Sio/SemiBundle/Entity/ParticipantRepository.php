@@ -31,12 +31,10 @@ class ParticipantRepository extends EntityRepository
 	public function verificationMail($email)
 	{
 		$em = $this -> getEntityManager();
-		$query = $em -> createQuery("SELECT COUNT(part.mail) FROM SioSemiBundle:Participant part WHERE part.mail = '$email' ");
+		$query = $em -> createQuery("SELECT COUNT(part.mail) FROM SioSemiBundle:Participant part WHERE part.mail = ':email' ");
 		return $query -> getSingleScalarResult();
 
 	}
-	
-	
 	
 }
 

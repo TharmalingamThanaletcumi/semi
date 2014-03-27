@@ -127,28 +127,34 @@ class ParticipantController extends Controller {
 	 */
 	 public function formulaireInscriptionAction(Request $request)
 	 {
+	 	
+		
+		
 		$listeTitre =array('Professeur','IA-IPR','IEN','Autre');
+		
 		 $form = $this -> createFormBuilder() 
 		-> add('nom', 'text') 
 		-> add('prenom','text')
 		-> add('email', 'email')
-		/*-> add('academie', 'choice', array('choices' => $lesAcadamie))*/
-		-> add('Academie', 'entity', array('class' => 'Sio\SemiBundle\Entity\Academie', 'property' => 'nom', 'multiple' => false,'empty_value' => 'choisissez votre Academie','required' => false ))
-		-> add('Ville-personnelle', 'text')
-		-> add('Ville-administrative', 'text')
+		-> add('academie', 'entity', array('class' => 'Sio\SemiBundle\Entity\Academie', 'property' => 'nom', 'multiple' => false,'empty_value' => 'choisissez votre Academie','required' => false ))
+		-> add('ville-personnelle', 'text')
+		-> add('resAdministrative', 'text')
 		-> add('titre', 'choice', array('choices'  => $listeTitre))
 		-> add('valider', 'submit') -> getForm();
 		
 		$form -> handleRequest($request);
+
+			$participant = $form->getData();
+			
 		if ( $form -> isValid()) {
-			$nom = $form -> get('nom') -> getData();
-			$prenom = $form -> get('prenom') -> getData();
-			$email = $form -> get('email') -> getData();
-			$academie = $form -> get('academie') -> getData();
-			$villePers = $form -> get('Ville-personnelle') -> getData();
-			$villeAdm = $form -> get('Ville-administrative') -> getData();
-			/*$dateCrea = DateTimeZone*/
-			$titre = $form -> get('titre') -> getData();
+			/*
+			    $em = $this->getDoctrine()->getManager();
+			    $em->persist($participant);
+			    $em->flush();
+			
+			    return $this->redirect($this->generateUrl('_seance_liste'));
+			
+			*/
 		}
 		return array('inscription' => $form -> createView());
 	 }
