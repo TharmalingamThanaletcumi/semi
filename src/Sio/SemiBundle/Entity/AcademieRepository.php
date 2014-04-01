@@ -15,7 +15,7 @@ class AcademieRepository extends EntityRepository
 	public function findIdAcadamie($academie) 
 		{
 			$em = $this -> getEntityManager();
-			$query = $em -> createQuery("SELECT aca.id FROM SioSemiBundle:Academie aca WHERE aca.nom =':academie'");
+			$query = $em -> createQuery("SELECT aca.id FROM SioSemiBundle:Academie aca WHERE aca.nom ='$academie'");
 			return $query -> getResult();
 		}
 }
