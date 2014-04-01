@@ -4,6 +4,7 @@ namespace Sio\SemiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
 * Participant
 * @ORM\Table(name="participant")
@@ -82,15 +83,13 @@ class Participant
      * @ORM\Column(name="dateCrea", type="integer")
      */
     private $dateCrea;
+		
+    /**
+     * @ORM\ManyToOne(targetEntity="Sio\SemiBundle\Entity\Academie")
+     * @ORM\JoinColumn(name="academie", referencedColumnName="id")
+     **/
+    private $academie;
 	
-	
-	
-	
-	
-
-
-    
-
     /**
      * Set id
      *
@@ -319,5 +318,28 @@ class Participant
     public function getDateCrea()
     {
         return $this->dateCrea;
+    }
+
+    /**
+     * Set academie
+     *
+     * @param \Sio\SemiBundle\Entity\Academie $academie
+     * @return Participant
+     */
+    public function setAcademie(\Sio\SemiBundle\Entity\Academie $academie = null)
+    {
+        $this->academie = $academie;
+    
+        return $this;
+    }
+
+    /**
+     * Get academie
+     *
+     * @return \Sio\SemiBundle\Entity\Academie 
+     */
+    public function getAcademie()
+    {
+        return $this->academie;
     }
 }

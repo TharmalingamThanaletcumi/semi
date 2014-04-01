@@ -9,6 +9,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Responses;
 use Symfony\Component\HttpFoundation\Request;
 
+
+
+
 /**
  * @Route("/participant")
  */
@@ -55,8 +58,8 @@ class ParticipantController extends Controller {
 	public function loginAction(Request $request) {
 		
 		$form = $this -> createFormBuilder() 
-		-> add('email', 'email') 
-		-> add('cleSeminaire', 'password' )
+		-> add('mail', 'email') 
+		-> add('cle', 'password' )
 		-> add('save', 'submit') -> getForm();
 
 		$form -> handleRequest($request);
@@ -64,8 +67,8 @@ class ParticipantController extends Controller {
 		
 		if ( $form -> isValid()) {
 				
-			$email = $form -> get('email') -> getData();
-			$CleSeminaire = $form -> get('cleSeminaire') -> getData();
+			$email = $form -> get('mail') -> getData();
+			$CleSeminaire = $form -> get('cle') -> getData();
 			
 			$verificationMail = $this -> getDoctrine() -> getRepository('SioSemiBundle:Participant') -> verificationMail($email);
 			$verificationCleSeminaire = $this -> getDoctrine() -> getRepository('SioSemiBundle:Seminaire') -> verificationCleSeminaire($CleSeminaire);
@@ -96,17 +99,17 @@ class ParticipantController extends Controller {
 	public function validationMailAction(Request $request) {
 		
 		$form = $this -> createFormBuilder() 
-		-> add('email', 'email') 
-		-> add('confrimation-email','email')
-		-> add('cleSeminaire', 'password') 
+		-> add('mail', 'email') 
+		-> add('confrimation-mail','email')
+		-> add('cle', 'password') 
 		-> add('save', 'submit') -> getForm();
 
 		$form -> handleRequest($request);
 		
 		if ( $form -> isValid()) {
-			$email = $form -> get('email') -> getData();
-			$confrimationEmail = $form -> get('confrimation-email') -> getData();
-			$CleSeminaire = $form -> get('cleSeminaire') -> getData();
+			$email = $form -> get('mail') -> getData();
+			$confrimationEmail = $form -> get('confrimation-mail') -> getData();
+			$CleSeminaire = $form -> get('cle') -> getData();
 			
 			$verificationCleSeminaire = $this -> getDoctrine() -> getRepository('SioSemiBundle:Seminaire') -> verificationCleSeminaire($CleSeminaire);
 			
@@ -127,34 +130,38 @@ class ParticipantController extends Controller {
 	 */
 	 public function formulaireInscriptionAction(Request $request)
 	 {
-	 	
 		
 		
+		$participant = new Participant();	
 		$listeTitre =array('Professeur','IA-IPR','IEN','Autre');
 		
 		 $form = $this -> createFormBuilder() 
 		-> add('nom', 'text') 
 		-> add('prenom','text')
-		-> add('email', 'email')
+		-> add('mail', 'email')
 		-> add('academie', 'entity', array('class' => 'Sio\SemiBundle\Entity\Academie', 'property' => 'nom', 'multiple' => false,'empty_value' => 'choisissez votre Academie','required' => false ))
-		-> add('ville-personnelle', 'text')
 		-> add('resAdministrative', 'text')
+		-> add('resFamilliale', 'text')
 		-> add('titre', 'choice', array('choices'  => $listeTitre))
-		-> add('valider', 'submit') -> getForm();
+		-> add('valider', 'submit') 
+		-> getForm();
 		
 		$form -> handleRequest($request);
-
-			$participant = $form->getData();
+		
+		
+			
 			
 		if ( $form -> isValid()) {
-			/*
+				
+			
+				$participant = $form->getData();
 			    $em = $this->getDoctrine()->getManager();
 			    $em->persist($participant);
 			    $em->flush();
 			
 			    return $this->redirect($this->generateUrl('_seance_liste'));
 			
-			*/
+			
 		}
 		return array('inscription' => $form -> createView());
 	 }
