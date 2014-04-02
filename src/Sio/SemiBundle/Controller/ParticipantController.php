@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Responses;
 use Symfony\Component\HttpFoundation\Request;
 
-
+use Sio\SemiBundle\Entity\Participant;
 
 /**
  * @Route("/participant")
@@ -133,14 +133,14 @@ class ParticipantController extends Controller {
 	 */
 	 public function formulaireInscriptionAction(Request $request)
 	 {
-	 	/*	$session = $request -> getSession();
+	 		$session = $request -> getSession();
 			$mail = $session-> get('mail');
-			$participant = $this -> getDoctrine() -> getRepository('SioSemiBundle:Participant') -> findParticipant($mail);
-			if(!$participant)
-					$participant = new Participant();
+			//$participant = $this -> getDoctrine() -> getRepository('SioSemiBundle:Participant') -> findMailParticipant($mail);
+			/*if(!$participant)
+					$participant = new Participant();*/
 		$listeTitre =array('Professeur','IA-IPR','IEN','Autre');
 				
-		 $form = $this -> createFormBuilder($participant) 
+		 $form = $this -> createFormBuilder() 
 		-> add('nom', 'text')
 		-> add('prenom','text')
 		-> add('mail', 'email')
@@ -154,17 +154,27 @@ class ParticipantController extends Controller {
 		$form -> handleRequest($request);
 	
 		if ( $form -> isValid()) {
+				$participants = $this -> getDoctrine() -> getRepository('SioSemiBundle:Participant') -> findMailParticipant($mail);
+				if(!$participants){
+					$participant = new Participant();
+					$participant->setNom( $form->get('nom')->getData());
+					$participant->setPrenom( $form->get('prenom')->getData());
+					$participant->setMail( $form->get('mail')->getData());
+					$participant->setAcademie( $form->get('academie')->getData());
+					$participant->setResAdministrative( $form->get('resAdministrative')->getData());
+					$participant->setResFamilliale( $form->get('resFamilliale')->getData());
+					$participant->setTitre( $form->get('titre')->getData());
+					print_r($participant);
+					
+				    $em = $this->getDoctrine()->getManager();
+					
+				    $em->persist($participant);
+				    $em->flush();
+					return $this->redirect($this->generateUrl('_seance_liste'));
 			
-				
-				$participant = $form->getData();
-			    $em = $this->getDoctrine()->getManager();
-			    $em->persist($participant);
-			    $em->flush();
-				return $this->redirect($this->generateUrl('_seance_liste'));
-			
-			
+				}
 		}
-		return array('inscription' => $form -> createView());*/
+		return array('inscription' => $form -> createView());
 	 }
 
 	/**

@@ -35,12 +35,15 @@ class ParticipantRepository extends EntityRepository
 		return $query -> getSingleScalarResult();
 
 	}
-	public function findParticipant($mail)
+	
+		public function findMailParticipant($mail)
 	{
 		$em = $this -> getEntityManager();
-		$query = $em -> createQuery("SELECT part FROM SioSemiBundle:Participant part WHERE part.mail=':mail' ");
+		$query = $em -> createQuery("SELECT part.mail  FROM SioSemiBundle:Participant part WHERE  part.mail = '$mail' ");
 		return $query -> getResult();
+
 	}
+
 	
 }
 

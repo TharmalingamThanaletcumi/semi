@@ -87,7 +87,7 @@ class Participant
 		
     /**
      * @ORM\ManyToOne(targetEntity="Sio\SemiBundle\Entity\Academie")
-     * @ORM\JoinColumn(name="academie", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idAcademie", referencedColumnName="id")
      **/
     private $academie;
 	
